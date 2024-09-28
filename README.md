@@ -6,13 +6,23 @@ This project implements a recommendation system for a live streaming platform us
 
 The project consists of the following main components:
 
-- `data/`: Directory containing the project's data, including user and streamer information.
-- `models/`: Directory containing the trained model, saved for future use in generating recommendations.
 - `platform.py`: Contains the core functionality of the recommendation system and the FastAPI web application.
 - `als_fit.py`: Script for processing data and training the Implicit ALS model.
 - `cold_start.py`: Implements a baseline recommendation system for new users or when personalized recommendations are not available.
 - `metrics.py`: Implements evaluation metrics for assessing the recommendation system's performance.
 - `requirements.txt`: Lists all the required Python packages for the project.
+
+## Data Structure and Processing
+
+Current platform relies on a following data structure in csv format:
+
+- `uid`: Unique identifier for each user
+- `session_id`: Unique identifier for each viewing session
+- `streamer_name`: Name of the streamer
+- `time_start`: Start time of the viewing session
+- `time_end`: End time of the viewing session
+
+However, you can easily modify the code to work with other data structures (see `process_data` function in `platform.py`)
 
 ## Setup and Installation
 
