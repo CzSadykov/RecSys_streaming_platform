@@ -6,7 +6,7 @@ This project implements a recommendation system for a live streaming platform us
 
 The project consists of the following main components:
 
-- `platform.py`: Contains the core functionality of the recommendation system and the FastAPI web application.
+- `ials_streaming.py`: Contains the core functionality of the recommendation system and the FastAPI web application.
 - `als_fit.py`: Script for processing data and training the Implicit ALS model.
 - `cold_start.py`: Implements a baseline recommendation system for new users or when personalized recommendations are not available.
 - `metrics.py`: Implements evaluation metrics for assessing the recommendation system's performance.
@@ -16,13 +16,13 @@ The project consists of the following main components:
 
 Current platform relies on a following data structure in csv format:
 
-- `uid`: Unique identifier for each user
-- `session_id`: Unique identifier for each viewing session
-- `streamer_name`: Name of the streamer
-- `time_start`: Start time of the viewing session
-- `time_end`: End time of the viewing session
+- `uid`: Unique identifier for each user (int or str)
+- `session_id`: Unique identifier for each viewing session (str or int)
+- `streamer_name`: Name of the streamer (str)
+- `time_start`: Start time of the viewing session (int or float)
+- `time_end`: End time of the viewing session (int or float)
 
-However, you can easily modify the code to work with other data structures (see `process_data` function in `platform.py`)
+However, you can easily modify the code to work with other data structures (see `process_data` function in `ials_streaming.py`)
 
 ## Setup and Installation
 
@@ -39,18 +39,18 @@ However, you can easily modify the code to work with other data structures (see 
 
 ## Core Functionality
 
-### Data Processing (`process_data` function in `platform.py`)
+### Data Processing (`process_data` function in `ials_streaming.py`)
 
 - Reads the input CSV file
 - Processes the data, converting user and streamer IDs to categorical codes
 - Creates a sparse item-user matrix
 
-### Model Training (`fit_model` function in `platform.py`)
+### Model Training (`fit_model` function in `ials_streaming.py`)
 
 - Trains an ALS model using the implicit library
 - Saves the trained model to the specified path
 
-### Recommendation Generation (`personal_recommendations` function in `platform.py`)
+### Recommendation Generation (`personal_recommendations` function in `ials_streaming.py`)
 
 - Loads the trained model
 - Generates personalized recommendations for a given user
@@ -81,9 +81,9 @@ The `metrics.py` file contains functions for evaluating the performance of the r
 
 These metrics focus on evaluating the ranking quality and relevance of the recommendations, which are crucial aspects of a recommendation system's performance in a streaming platform context.
 
-### FastAPI Web Application (`platform.py`)
+### FastAPI Web Application (`ials_streaming.py`)
 
-The `platform.py` file is the core of the recommendation system and contains the following key components:
+The `ials_streaming.py` file is the core of the recommendation system and contains the following key components:
 
 1. Data Processing:
    - The `process_data` function reads and processes the input CSV file, converting user and streamer IDs to categorical codes and creating a sparse item-user matrix.
@@ -106,7 +106,7 @@ The `platform.py` file is the core of the recommendation system and contains the
 6. Main Function:
    - Sets up and runs the uvicorn server to host the FastAPI application.
 
-The `platform.py` file integrates all these components to provide a complete recommendation system, from data processing to serving recommendations via an API.
+The `ials_streaming.py` file integrates all these components to provide a complete recommendation system, from data processing to serving recommendations via an API.
 
 ## Usage
 
@@ -118,7 +118,7 @@ The `platform.py` file integrates all these components to provide a complete rec
 
 2. Run the FastAPI application:
    ```
-   python platform.py
+   python ials_streaming.py
    ```
    This starts the web server, making the recommendation API available.
 

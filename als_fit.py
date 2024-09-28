@@ -3,7 +3,7 @@ import sys
 import time
 
 from dotenv import load_dotenv
-from live_streaming_platform.platform import process_data, fit_model
+from live_streaming_platform.ials_streaming import process_data, fit_model
 
 # Загрузка переменных окружения из файла .env
 load_dotenv()

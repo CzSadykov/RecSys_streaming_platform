@@ -7,9 +7,9 @@ def ndcg_at_k(y_pred, y_true, k: int = 10):
     Parameters
     ----------
     y_pred : array-like
-        Predicted values
+        Predicted scores
     y_true : array-like
-        True values
+        True scores
     k : int, optional
         Number of items to consider, by default 10
 
@@ -34,9 +34,9 @@ def map_at_k(y_pred, y_true, k: int = 10):
     Parameters
     ----------
     y_pred : array-like
-        Predicted values
+        Predicted scores
     y_true : array-like
-        True values
+        True scores
     k : int, optional
         Number of items to consider, by default 10
 

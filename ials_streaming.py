@@ -38,7 +38,7 @@ def process_data(path_from: str):
     data: pandas.DataFrame
         dataframe after proccessing
     sparse_item_user: scipy.sparse.csc_matrix
-        sparce item user csc matrix
+        sparse item user csc matrix
     """
     cols = [
         'uid', 'session_id', 'streamer_name', 'time_start', 'time_end'
@@ -212,7 +212,7 @@ async def get_recommendation(user_id: int):
 
 def main() -> None:
     """Run application"""
-    uvicorn.run("platform:app", host="localhost")
+    uvicorn.run("ials_streaming:app", host="localhost")
 
 
 if __name__ == "__main__":
