@@ -1,4 +1,4 @@
-# Live Streaming Platform Recommendation System
+# Live Streaming RecSys Platform 
 
 This project implements a recommendation system for a live streaming platform using the Implicit Alternating Least Squares (ALS) algorithm. The system provides personalized streamer recommendations to users based on their viewing history.
 
