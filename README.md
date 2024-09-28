@@ -6,9 +6,12 @@ This project implements a recommendation system for a live streaming platform us
 
 The project consists of the following main components:
 
+- `data/`: Directory containing the project's data, including user and streamer information.
+- `models/`: Directory containing the trained model, saved for future use in generating recommendations.
 - `platform.py`: Contains the core functionality of the recommendation system and the FastAPI web application.
 - `als_fit.py`: Script for processing data and training the Implicit ALS model.
 - `cold_start.py`: Implements a baseline recommendation system for new users or when personalized recommendations are not available.
+- `metrics.py`: Implements evaluation metrics for assessing the recommendation system's performance.
 - `requirements.txt`: Lists all the required Python packages for the project.
 
 ## Setup and Installation
@@ -53,6 +56,21 @@ The `cold_start.py` script implements a baseline recommendation system for new u
 
 This baseline approach ensures that the system can always provide recommendations, even for users with no viewing history.
 
+### Evaluation Metrics (`metrics.py`)
+
+The `metrics.py` file contains functions for evaluating the performance of the recommendation system. Here's an accurate description of its functionality:
+
+1. Mean Average Precision at K (MAP@K):
+   - Computes the mean of the Average Precision at K across all users.
+   - Provides an overall measure of recommendation quality across the user base.
+
+2. Normalized Discounted Cumulative Gain at K (NDCG@K):
+   - Measures the ranking quality of the recommendations.
+   - Takes into account the position of correct recommendations in the list.
+   - Normalized version allows for comparison between users with different numbers of relevant items.
+
+These metrics focus on evaluating the ranking quality and relevance of the recommendations, which are crucial aspects of a recommendation system's performance in a streaming platform context.
+
 ### FastAPI Web Application (`platform.py`)
 
 The `platform.py` file is the core of the recommendation system and contains the following key components:
@@ -96,6 +114,9 @@ The `platform.py` file integrates all these components to provide a complete rec
 
 3. Access recommendations:
    Send a GET request to `http://localhost:8000/recomendations/user/{user_id}` to receive personalized recommendations for a specific user.
+
+4. Evaluate the model:
+   Use the functions in `metrics.py` to assess the performance of the recommendation system, focusing on MAP@K and NDCG@K to evaluate ranking quality and relevance of recommendations.
 
 ## Environment Variables
 
